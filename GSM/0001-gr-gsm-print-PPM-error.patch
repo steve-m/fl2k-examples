@@ -1,0 +1,24 @@
+From eec02559aae91454211c01dcb1afa4c7701a69fe Mon Sep 17 00:00:00 2001
+From: Steve Markgraf <steve@steve-m.de>
+Date: Wed, 25 Apr 2018 01:48:32 +0200
+Subject: [PATCH] gr-gsm: print PPM error
+
+---
+ lib/receiver/clock_offset_control_impl.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/receiver/clock_offset_control_impl.cc b/lib/receiver/clock_offset_control_impl.cc
+index 868cbc2..c0a8606 100644
+--- a/lib/receiver/clock_offset_control_impl.cc
++++ b/lib/receiver/clock_offset_control_impl.cc
+@@ -135,6 +135,7 @@ void clock_offset_control_impl::process_measurement(pmt::pmt_t msg)
+                     else
+                     {
+                         d_ppm_estimate = (1-d_alfa)*d_ppm_estimate+d_alfa*ppm;
++                        std::cout << "PPM estimate: " << d_ppm_estimate << std::endl;
+                     }
+                     
+                     if(d_counter == 5)
+-- 
+2.17.0
+
